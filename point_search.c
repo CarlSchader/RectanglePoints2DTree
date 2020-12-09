@@ -10,7 +10,7 @@
 
 #define min(x, y) (((x) <= (y)) ? (x) : (y))
 
-struct SearchContext* create(const struct Point* points_begin, const struct Point* points_end) {
+struct  SearchContext* __stdcall create(const struct Point* points_begin, const struct Point* points_end) {
     struct SearchContext* sc = (struct SearchContext*)malloc(sizeof(struct SearchContext));
     sc->root = (struct Node*)malloc(sizeof(struct Node));
     int size = 0;
@@ -28,7 +28,7 @@ struct SearchContext* create(const struct Point* points_begin, const struct Poin
     return sc;
 }
 
-int32_t search(struct SearchContext* sc, const struct Rect rect, const int32_t count, struct Point* out_points) {
+int32_t __stdcall search(struct SearchContext* sc, const struct Rect rect, const int32_t count, struct Point* out_points) {
     if (count == 0 || out_points == NULL) {
         return 0;
     }
@@ -56,7 +56,7 @@ int32_t search(struct SearchContext* sc, const struct Rect rect, const int32_t c
     }
 }
 
-struct SearchContext* destroy(struct SearchContext* sc) { // TODO: Figure out a reasonable way to handle error catching in C.
+struct SearchContext* __stdcall destroy(struct SearchContext* sc) { // TODO: Figure out a reasonable way to handle error catching in C.
     node_destroy(sc->root);
     free(sc);
     return NULL;
