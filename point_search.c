@@ -12,6 +12,10 @@
 
 struct  SearchContext* __stdcall create(const struct Point* points_begin, const struct Point* points_end) {
     struct SearchContext* sc = (struct SearchContext*)malloc(sizeof(struct SearchContext));
+    if (points_begin == NULL) {
+        return sc;
+    }
+    
     sc->root = (struct Node*)malloc(sizeof(struct Node));
     int size = 0;
     
